@@ -40,15 +40,24 @@ input:focus {
 </style>
 </head>
 <body>
-<input type="text" placeholder="Digite um texto"/>
+<form>
+
+		Valor da compra:<br>
+		<input type="text" id="valorDaCompra"><br>
+
+		Parcelas:<br>
+		<select id="qtdeParcelas">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="4">4</option>
+		</select>
+
+		<button style="margin-bottom: 7px" id="botao" onclick="calcular()">Calcular</button><br>
+
+		Valor final <br>
+    <div id="resultado"></div>
+
+	</form>
 </body>
-<script>
-document.querySelector("input").addEventListener("keyup", function(e){
-let $this = e.target;
-let  str = $this.value;
-str = str.toString().toLowerCase();
-str = str.replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '').replace(/[\s_-]+/g, '-').replace(/\s+/g, '-').replace(/[^a-z0-9 -]/g, "");
-$this.value = str;
-});
-</script>
+
 </html>
