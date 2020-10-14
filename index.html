@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parcelar Valor</title>
-<style>
-body {
-    min-height: 100vh;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    background: #F2F5FF;
-}
-input{
--webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    background-color: #fff;
-    background-image: none;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    border-radius: 5px;
-    color: #999;
-    border: 1px solid #ddd;
-	}
-input:focus {
-    color: #999;
-    border: 2px solid #ddd;
-    outline: none;
-}
-</style>
-</head>
-<body>
-<form>
-
-		Valor da compra:<br>
-		<input type="text" id="valorDaCompra"><br>
-
-		Parcelas:<br>
-		<select id="qtdeParcelas">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="4">4</option>
-		</select>
-
-		<button style="margin-bottom: 7px" id="botao" id="parcelar">Calcular</button><br>
-
-		Valor final <br>
-    <div id="resultado"></div>
-
-	</form>
-</body>
-
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Simulador de Juros Simples e Compostos</title>
+     <link rel="stylesheet" href="./styles.css">	   
+   </head>
+   <body>
+      <div class='calculadora'>
+         <div class="titulo">
+            <h2>Simulador de Juros Simples e Compostos</h2>
+         </div>
+         <div class="grids">
+            <div class="calculo">
+               <div class="box">
+                  <label>Valor da compra:</label>
+                  <input type="text" id="valor">
+               </div>
+               <div class="box">
+                  <label>Parcelas:</label>
+                  <select id="parcelas"></select>
+               </div>
+               <div class="box">
+                  <label>Tipo de Juros:</label>
+                  <select id="tiposjuros">
+                     <option value='1'>Composto</option>
+                     <option value='2'>Simples</option>
+                  </select>
+               </div>
+               <div class="box">
+                  <label>Taxa de Juros:</label>
+                  <input type="text" id="juros" disabled>
+               </div>
+            </div>
+            <div class="box-resultado">
+               <div class="topo">
+                  <span>Total Futuro</span>
+                  <div class="valor">
+                     <span>R$:</span>
+                     <h1 id="bem">0,00</h1>
+                  </div>
+               </div>
+               <div class="info-geral">
+                  <div class="item">
+                     <h3 id="parcelas_txt">-</h3>
+                     <div class="valor">
+                        <span>R$:</span>
+                        <h2 id='resultado'>00,00</h2>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <h3 id="parcelas_txt">Juros totais:</h3>
+                     <div class="valor">
+                        <span>R$:</span>
+                        <h2 id='jurostotais'>0,00</h2>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+<script src="./script.js"></script>	
 </html>
