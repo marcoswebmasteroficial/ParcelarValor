@@ -1,0 +1,143 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background: #1f2330;
+}
+
+.calculadora {
+	border-radius: 8px;
+	box-shadow: 0 8px 35px 0 rgba(181, 181, 188, .28);
+	background-color: #fff;
+	margin-top: 50px;
+	padding: 20px 20px;
+	margin: 0 18%;
+}
+
+.titulo h2 {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1;
+	color: #f87f4b;
+	background: #1f2330;
+	border-radius: 5px;
+	padding: 30px;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+.grids {
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.box-resultado {
+	width: 470px;
+	margin-bottom: 30px;
+	border-radius: 15px;
+	box-shadow: 0 19px 35px 0 rgba(117, 117, 124, .1);
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.box-resultado .topo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	height: 152px;
+	background-image: linear-gradient(77deg, #f9844b, #f4324e);
+}
+
+.box-resultado .topo span {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.13;
+	text-align: center;
+	color: #fff;
+	margin-bottom: 20px;
+	display: block;
+}
+
+.box-resultado .topo .valor {
+	display: flex;
+	align-items: flex-end;
+}
+
+.box-resultado .topo .valor h1 {
+	font-size: 60px;
+	font-weight: 900;
+	line-height: .8;
+	letter-spacing: -1.3px;
+	color: #fff;
+	margin: 0;
+}
+
+.info-geral {
+	padding: 26px 39px;
+}
+
+.info-geral .item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: solid 1px rgba(151, 151, 151, .21);
+	padding-bottom: 9px;
+	margin-bottom: 25px;
+}
+
+.info-geral .item h3 {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.13;
+	color: #313442;
+}
+
+.info-geral .item .valor {
+	width: 168px;
+	display: flex;
+	align-items: center;
+}
+
+input[type="text"],
+select {
+	color: #313442;
+	border-radius: 7px;
+	border: solid 1px rgba(117, 117, 124, .38);
+	background-color: #fff;
+	padding: 0 16px;
+	font-size: 22px;
+	height: 40px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -1px;
+	transition: all .3s;
+	outline: none;
+}
+
+select {
+	width: 100%;
+}
+
+input[type="text"]:focus,
+select:focus {
+	border: 1px solid #f8774c;
+}
+
+.calculo {
+	display: grid;
+	grid-gap: 3px;
+	grid-auto-rows: 80px;
+	margin-right: 20px;
+}
+
+.calculo .box {
+	display: inline-block;
+}
+
+.calculo .box label {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 40px;
+	color: #313442;
+	display: block;
+}
