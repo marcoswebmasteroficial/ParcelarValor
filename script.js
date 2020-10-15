@@ -105,15 +105,18 @@ document.getElementById("valor").addEventListener("blur", function (e) {
 	CALCULAR.prestacoes();
 });
 document.getElementById("valor").addEventListener("keyup", function (e) {
-	let input = e.target;
-	v = input.value;
-	v = v.replace(/\D/g, "") // permite digitar apenas numero
-
-	v = v.replace(/(\d{1})(\d{17})$/, "$1.$2") // coloca ponto antes dos ultimos digitos
-	v = v.replace(/(\d{1})(\d{13})$/, "$1.$2") // coloca ponto antes dos ultimos 13 digitos
-	v = v.replace(/(\d{1})(\d{10})$/, "$1.$2") // coloca ponto antes dos ultimos 10 digitos
-	v = v.replace(/(\d{1})(\d{7})$/, "$1.$2") // coloca ponto antes dos ultimos 7 digitos
-	v = v.replace(/(\d{1})(\d{1,4})$/, "$1,$2") // coloca virgula antes dos ultimos 4 digitos
-
-	input.value = v;
+let val,temp, neg;
+[val ,temp, neg] = [e.target.value,e.target.value+ '',false];
+temp = parseInt(temp.replace(/\D/g,""));
+if (Number.isNaN(temp)) temp = 0;
+temp = temp + '';
+if(val.indexOf("-") == 0) neg = true;temp = temp.replace("-","");
+if(temp.length == 1) temp = "0"+temp;  temp = temp.replace(/([0-9]{2})$/g, ",$1");
+if (temp.indexOf("-") == 0) neg = true;temp = temp.replace("-", "");
+if (temp.length > 6)temp = temp.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+if( temp.length > 9)temp = temp.replace(/([0-9]{3}).([0-9]{3}),([0-9]{2}$)/g,".$1.$2,$3");
+if( temp.length > 12)temp = temp.replace(/([0-9]{3}).([0-9]{3}).([0-9]{3}),([0-9]{2}$)/g,".$1.$2.$3,$4");
+if(temp.indexOf(".") == 0) temp = temp.replace(".","");
+if(temp.indexOf(",") == 0) temp = temp.replace(",","0,");
+e.target.value = (neg ? '-'+temp : temp);
 });
