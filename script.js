@@ -55,9 +55,21 @@ for (parcela in objParcelas) {
 	option.innerText = parcela + ' Meses';
 	document.querySelector("select").appendChild(option);
 }
+
+function moeda(v){
+    v=v.replace(/\D/g,"") 
+    v = v.toString();
+	v = v.replace(/(\d)(\d{17})$/,"$1.$2");
+	v = v.replace(/(\d)(\d{14})$/,"$1.$2");
+	v = v.replace(/(\d)(\d{11})$/,"$1.$2");
+	v = v.replace(/(\d)(\d{8})$/,"$1.$2");
+	v = v.replace(/(\d)(\d{5})$/,"$1.$2");
+	v = v.replace(/(\d)(\d{2})$/,"$1,$2");
+    return  v;
+}
 const CALCULAR = {
 	prestacoes: function () {
-		let $this = document.getElementById("valor");
+     let $this = document.getElementById("valor");
 		let str = parseFloat($this.value);
 		let parcelas = parseInt(document.getElementById("parcelas").value);
 		let tipoJuros = parseInt(document.getElementById("tiposjuros").value);
@@ -77,21 +89,26 @@ const CALCULAR = {
 		}
 		document.getElementById("juros").value = taxaJuros + '%';
 		document.getElementById("jurostotais").innerText = jurosTotais.toLocaleString('pt-br', {
-			minimumFractionDigits: 2
+			minimumFractionDigits: 2,
+			maximumFractionDigits:2
 		});
 		document.getElementById("parcelas_txt").innerText = parcelas + 'x';
 		document.getElementById("resultado").innerText = valorParcela.toLocaleString('pt-br', {
-			minimumFractionDigits: 2
+			minimumFractionDigits: 2,
+			maximumFractionDigits:2
 		});
 		document.getElementById("resultado_aplicacaoes").innerText = str.toLocaleString('pt-br', {
-			minimumFractionDigits: 2
+			minimumFractionDigits: 2,
+			maximumFractionDigits:2
 		});
 		document.getElementById("resultado_aplicacao").innerText = str.toLocaleString('pt-br', {
-			minimumFractionDigits: 2
+			minimumFractionDigits: 2,
+			maximumFractionDigits:2
 		});
 
 		document.getElementById("bem").innerText = valorTotalDoBem.toLocaleString('pt-br', {
-			minimumFractionDigits: 2
+			minimumFractionDigits: 2,
+			maximumFractionDigits:2
 		});
 	}
 }
@@ -101,9 +118,9 @@ document.getElementById("tiposjuros").addEventListener("change", function (e) {
 document.getElementById("parcelas").addEventListener("change", function (e) {
 	CALCULAR.prestacoes();
 });
-document.getElementById("valor").addEventListener("blur", function (e) {
-	CALCULAR.prestacoes();
+document.getElementById("txt_valor").addEventListener("keyup", function (e) {
+e.target.value =  moeda(e.target.value);
+document.getElementById("valor").value =  parseFloat( e.target.value.replace(".","").replace(",",".")); 
+CALCULAR.prestacoes();
 });
-document.getElementById("valor").addEventListener("keyup", function (e) {
-        CALCULAR.prestacoes();
-});
+
