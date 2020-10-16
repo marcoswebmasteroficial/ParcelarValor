@@ -105,18 +105,5 @@ document.getElementById("valor").addEventListener("blur", function (e) {
 	CALCULAR.prestacoes();
 });
 document.getElementById("valor").addEventListener("keyup", function (e) {
-let val,temp, neg;
-[val ,temp, neg] = [e.target.value,e.target.value+ '',false];
-temp = parseInt(temp.replace(/\D/g,""));
-if (Number.isNaN(temp)) temp = 0;
-temp = temp + '';
-if(val.indexOf("-") == 0) neg = true;temp = temp.replace("-","");
-if(temp.length == 1) temp = "0"+temp;  temp = temp.replace(/([0-9]{2})$/g, ",$1");
-if (temp.indexOf("-") == 0) neg = true;temp = temp.replace("-", "");
-if (temp.length > 6)temp = temp.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-if( temp.length > 9)temp = temp.replace(/([0-9]{3}).([0-9]{3}),([0-9]{2}$)/g,".$1.$2,$3");
-if( temp.length > 12)temp = temp.replace(/([0-9]{3}).([0-9]{3}).([0-9]{3}),([0-9]{2}$)/g,".$1.$2.$3,$4");
-if(temp.indexOf(".") == 0) temp = temp.replace(".","");
-if(temp.indexOf(",") == 0) temp = temp.replace(",","0,");
-e.target.value = (neg ? '-'+temp : temp);
+        CALCULAR.prestacoes();
 });
