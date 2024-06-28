@@ -41,11 +41,11 @@ const CALCULAR = {
         const valor = parseFloat(valorInput);
         const parcelas = parseInt(document.getElementById("parcelas").value);
         const tipoJuros = parseInt(document.getElementById("tiposjuros").value);
-        const taxaJuros = parseFloat(objParcelas[parcelas].juros);
+        const taxaJuros = parseFloat(objParcelas[parcelas]?.juros || 0);
         const parcial = taxaJuros / 100;
         let valorParcela, valorTotalDoBem, jurosTotais;
 
-        if (isNaN(valor) || isNaN(parcelas) || isNaN(tipoJuros)) {
+        if (isNaN(valor) || isNaN(parcelas) || isNaN(tipoJuros) || isNaN(taxaJuros)) {
             console.error("Valores inválidos!");
             return;
         }
@@ -77,4 +77,5 @@ document.getElementById("txt_valor").addEventListener("keyup", function (e) {
 });
 
 initParcelasSelect();
+document.getElementById("txt_valor").value = "0.00";
 CALCULAR.prestacoes();
